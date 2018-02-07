@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.travel.basic.dao.HotplaceMapper" >
+  <resultMap id="BaseResultMap" type="com.travel.basic.entity.Hotplace" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="s_img" property="sImg" jdbcType="VARCHAR" />
+    <result column="s_name" property="sName" jdbcType="VARCHAR" />
+    <result column="s_level" property="sLevel" jdbcType="VARCHAR" />
+    <result column="s_area" property="sArea" jdbcType="VARCHAR" />
+    <result column="s_price" property="sPrice" jdbcType="INTEGER" />
+    <result column="s_soldnum" property="sSoldnum" jdbcType="INTEGER" />
+    <result column="sight_hot" property="sightHot" jdbcType="INTEGER" />
+    <result column="s_replace" property="sReplace" jdbcType="VARCHAR" />
+    <result column="s_slogen" property="sSlogen" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, s_img, s_name, s_level, s_area, s_price, s_soldnum, sight_hot, s_replace, s_slogen
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from hotplace
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+</mapper>
