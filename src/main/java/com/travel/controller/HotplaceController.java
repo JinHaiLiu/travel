@@ -1,5 +1,7 @@
 package com.travel.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -12,38 +14,37 @@ import com.travel.basic.entity.Hotplace;
 import com.travel.basic.service.HotplaceService;
 
 /**
- * @author liujh
+ * @author suhu
  */
 @Controller
-@RequestMapping("/travel")
+//@RequestMapping("/travel")
 public class HotplaceController {
     
     @Autowired
     private HotplaceService hotplaceService;
     
-
     /**
-     * 查询数据
+     * 查询全部数据返回至前端
      * 
-     * 后面将查询数据已json格式返回前端。 目前是测试，返回指定页面
      * @param model
      * @param request
      * @param response
      * @return
      */
-    @RequestMapping("/list")
-    public String list(Model model, HttpServletRequest request, HttpServletResponse response) {
+    @RequestMapping(value = "/all")
+    public String getAll(Model model, HttpServletRequest request, HttpServletResponse response) {
         try {
-            // TEST 查询数据
-            Hotplace hotplace = hotplaceService.selectByPrimaryKey(117);
-            // 数据返回前端
-            model.addAttribute("hotplace", hotplace);
+            List<Hotplace> all = hotplaceService.selectAll();
             
-            return "hotplace";
+            model.addAttribute("all", all);
+            
+            return "index";
         } catch (Exception e) {
             e.printStackTrace();
             return null;
         }
+        
+       
     }
 
 }

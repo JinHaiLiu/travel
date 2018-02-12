@@ -8,7 +8,7 @@ import org.springframework.context.ApplicationContextAware;
 /**
  * @ClassName: SpringContextUtil.java
  * @Description: 普通类使用Spring Service
- * @author liujh
+ * @author suhu
  */ 
 public class SpringContextUtil implements ApplicationContextAware {
 

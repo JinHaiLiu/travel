@@ -1,0 +1,74 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=">
+<title>数据展示</title>
+
+<link rel="stylesheet" type="text/css" href="/css/bootstrap.css">
+<script src="/js/jquery-3.3.1.min.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+
+</head>
+<body>
+	<!--  container BEGIN -->
+	<div class="container">
+
+		<div class="panel panel-primary">
+			<!-- panel-primary BEGIN -->
+
+			<div class="panel-heading" style="height: 100px; text-align: center;">
+				<!-- panel-heading BEGIN -->
+				<h1 class="panel-title">数据之美</h1>
+			</div>
+			<!-- ~ panel-heading END -->
+
+
+			<div class="panel-body">
+				<!-- panel-body BEGIN -->
+				<div>
+					<!-- 按钮 BEGIN -->
+					<button type="button" class="btn btn-primary">推荐</button>
+					<button type="button" class="btn btn-primary">人气</button>
+					<button type="button" class="btn btn-primary">价格</button>
+				</div><!-- ~ 按钮 END -->
+				<div style="margin-top: 30px;"><!-- 数据内容  BEGIN -->
+					
+					<div th:each="hotplace,hotStat : ${all}">
+						<!-- 遍历div BEGIN -->
+						<div>
+							<div style="height: 200px; width: 300px; border: 1px solid red; float: left; display: inline;">
+								<img th:src="@{${hotplace.sImg}}"  style="height: 200px; width: 300px;"/> <!-- 图片显示区域 -->
+							</div>
+							
+							<div style="border: 1px solid red; float: left; display: inline; height: 200px; width: 50%;">
+								
+								<h1 th:text="${hotplace.sName}"></h1> <br /> 
+								
+								<font th:text="${hotplace.sLevel}"></font> 
+								 [ 宁夏银川市 ] 热度：<br /> 
+								 <font>地址：宁夏银川市西夏区</font>
+							</div>
+							
+							<div style="border: 1px solid red; float: left; display: inline; height: 200px; width: 15%">
+								<font th:text="${hotplace.sPrice}"></font>  <font>月销售：122</font>
+							</div>
+						</div><!-- ~ 遍历div END -->
+						
+					</div>
+
+				</div><!-- ~ 数据内容 END -->
+
+			</div><!-- ~ panel-body END -->
+
+
+			<div class="panel-footer">Panel footer</div>
+
+		</div><!-- ~ panel-primary END -->
+
+
+	</div>
+	<!--  ~ container END -->
+
+</body>
+</html>

@@ -1,12 +1,22 @@
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>热力图</title>
-</head>
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
 <body>
-	<a th:text="${hotplace.sName}"/> <br/>
-	<a th:text="${hotplace.sPrice}"/> <br/>
-	<a th:text="${hotplace.sReplace}"/> 
+
+	<tr th:each="hotplace,hotStat : ${all}">
+		
+		<a th:text="${hotplace.sImg}" />
+		<br />
+		<a th:text="${hotplace.sName}" />
+		<br />
+		<a th:text="${hotplace.sPrice}" />
+		<br />
+		<a th:text="${hotplace.sReplace}" />
+		<br />
+		<a th:text="${hotplace.sLevel}" />
+		<br />
+		<a th:text="${hotplace.sArea}" />
+		<br />
+		<a th:text="${hotplace.sSoldnum}" />
+	
 </body>
 </html>

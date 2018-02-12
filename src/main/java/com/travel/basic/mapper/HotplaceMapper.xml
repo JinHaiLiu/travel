@@ -22,4 +22,12 @@
     from hotplace
     where id = #{id,jdbcType=INTEGER}
   </select>
+  <!-- 查询全部数据 START -->
+  <select id="selectAll" resultMap="BaseResultMap" >
+		select
+		<include refid="Base_Column_List" />
+		from hotplace
+	</select>
+  <!-- 查询全部数据 END -->
+	
 </mapper>
