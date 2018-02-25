@@ -8,7 +8,12 @@
 <link rel="stylesheet" type="text/css" href="/css/bootstrap.css">
 <script src="/js/jquery-3.3.1.min.js"></script>
 <script src="/js/bootstrap.min.js"></script>
-
+<script>
+	function b1() {
+		this.selectSort(all.Filter.SortTypes.POP), this.dispatchActionEvent(
+				all.Filter.ActionTypes.SORT, all.Filter.SortTypes.POP)
+	}
+</script>
 </head>
 <body>
 	<!--  container BEGIN -->
@@ -28,43 +33,68 @@
 				<!-- panel-body BEGIN -->
 				<div>
 					<!-- 按钮 BEGIN -->
-					<button type="button" class="btn btn-primary">推荐</button>
+					<button onclick="b1" class="btn btn-primary">星级</button>
 					<button type="button" class="btn btn-primary">人气</button>
 					<button type="button" class="btn btn-primary">价格</button>
-				</div><!-- ~ 按钮 END -->
-				<div style="margin-top: 30px;"><!-- 数据内容  BEGIN -->
-					
+				</div>
+				<!-- ~ 按钮 END -->
+				<div style="margin-top: 30px;">
+					<!-- 数据内容  BEGIN -->
+
 					<div th:each="hotplace,hotStat : ${all}">
 						<!-- 遍历div BEGIN -->
 						<div>
-							<div style="height: 200px; width: 300px; border: 1px solid red; float: left; display: inline;">
-								<img th:src="@{${hotplace.sImg}}"  style="height: 200px; width: 300px;"/> <!-- 图片显示区域 -->
+							<div
+								style="height: 200px; width: 300px; border: 1px solid red; float: left; display: inline;">
+								<img th:src="@{${hotplace.sImg}}"
+									style="height: 200px; width: 300px;" />
+								<!-- 图片显示区域 -->
 							</div>
-							
-							<div style="border: 1px solid red; float: left; display: inline; height: 200px; width: 50%;">
-								
-								<h1 th:text="${hotplace.sName}"></h1> <br /> 
-								
-								<font th:text="${hotplace.sLevel}"></font> 
-								 [ 宁夏银川市 ] 热度：<br /> 
-								 <font>地址：宁夏银川市西夏区</font>
+							<div>
+
+								<div
+									style="border: 1px solid red; float: left; display: inline; height: 200px; width: 50%;">
+
+									<a
+										href="http://piao.qunar.com/ticket/list.htm?keyword=%E5%AE%81%E5%A4%8F&region=&from=mpl_search_suggest"><h1
+											th:text="${hotplace.sName}" /></a> <font>星级：</font><font
+										th:text="${hotplace.sLevel}"></font> <br /> <font>[</font><font
+										th:text="${hotplace.sArea}"></font><font>]</font> <br /> <font>详细地址：</font><font
+										th:text="${hotplace.sReplace}"></font> <br /> <font>看点：</font><font
+										th:text="${hotplace.sSlogen}"></font> <br />
+
+								</div>
+
+								<div
+									style="border: 1px solid red; float: left; display: inline; height: 200px; width: 15%; text-align: center;">
+
+									<br /> <br /> <br /> <font>门票：</font><font
+										th:text="${hotplace.sPrice}"></font> <br /> <br />
+									<button style="background-color: #1cafc5; color: #FFFFFF;"
+										onclick="window.open('http://piao.qunar.com/ticket/list_%E5%AE%81%E5%A4%8F.html?from=mps_search_suggest_h')">
+										查看景点 >></button>
+									<br /> <br /> <font>人气：</font><font
+										th:text="${hotplace.sSoldnum}"></font> <br />
+
+								</div>
 							</div>
-							
-							<div style="border: 1px solid red; float: left; display: inline; height: 200px; width: 15%">
-								<font th:text="${hotplace.sPrice}"></font>  <font>月销售：122</font>
-							</div>
-						</div><!-- ~ 遍历div END -->
-						
+						</div>
+						<!-- ~ 遍历div END -->
+
 					</div>
 
-				</div><!-- ~ 数据内容 END -->
+				</div>
+				<!-- ~ 数据内容 END -->
 
-			</div><!-- ~ panel-body END -->
+			</div>
+			<!-- ~ panel-body END -->
 
+			<footer>&copy; Copyright &copy;宁夏大学新华学院计算机班suhu
+			 </footer>
 
-			<div class="panel-footer">Panel footer</div>
+		</div>
 
-		</div><!-- ~ panel-primary END -->
+		<!-- ~ panel-primary END -->
 
 
 	</div>
