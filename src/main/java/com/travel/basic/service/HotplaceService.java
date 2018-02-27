@@ -20,8 +20,9 @@ public interface HotplaceService {
     /**
      * 查询全部数据
      * 
+     * @param desc
      * @return
      */
-    List<Hotplace> selectAll();
+    List<Hotplace> selectAll(String desc);
 
 }

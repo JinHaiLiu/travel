@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+
+	<!-- 数据内容  BEGIN -->
+	<div th:each="hotplace,hotStat : ${all}">
+		<!-- 遍历div BEGIN -->
+		<div style="float: left;  display: inline; margin-top: 5px;">
+			<!-- 图片div BEGIN -->
+			<div style="height: 190px; width: 260px; /* border: 1px solid red;*/ float: left; display: inline; margin-right: 8px;">
+				<img th:src="@{${hotplace.sImg}}" style="height: 190px; width: 256px;" />
+				<!-- 图片显示区域 -->
+			</div>
+			<!-- ~ 图片div END -->
+			
+			<!-- 中间div BEGIN -->
+			
+			<div style="/* border: 1px solid red; */ float: left; display: inline; width: 500px; height: 190px; ">
+
+				<a href="http://piao.qunar.com/ticket/list.htm?keyword=%E5%AE%81%E5%A4%8F&region=&from=mpl_search_suggest" target="_blank">
+					<h1 th:text="${hotplace.sName}" />
+				</a>
+				<!-- 星级 BEGIN --> 
+				<p>
+					<font>星级：</font>
+					<font th:text="${hotplace.sLevel}"></font> 
+				<p>
+				<!-- ~ 星级 END -->
+				
+				<!-- 地址 BEGIN -->
+				<p>
+					<font>[</font>
+					<font th:text="${hotplace.sArea}"></font>
+					<font>]</font>
+				</p>
+				<!-- ~ 地址 END -->
+				
+				<!-- 详细地址 BEGIN -->
+				<p>
+				    <font>详细地址：</font>
+				    <font th:text="${hotplace.sReplace}"></font> 
+				</p>
+				<!-- ~ 详细地址 END -->
+				
+				<!-- 看点 BEGIN -->
+				<p>
+					<font>看点：</font>
+					<font th:text="${hotplace.sSlogen}"></font>
+				</p>
+				<!-- ~ 看点 END -->
+			</div>
+			<!-- ~ 中间div END -->
+			
+			<!-- 右边div BEGIN -->
+			<div style="/* border: 1px solid red; */ float: left; display: inline; width: 200px; height: 190px;  text-align: center;">
+
+				<p style="margin-top: 35px">
+					<font>门票：</font>
+					<font th:text="${hotplace.sPrice}"></font>
+				</p>
+				<p>
+					<button   type="button" class="btn btn-info"
+						style="background-color: #1cafc5; color: #FFFFFF;" onclick="window.open('http://piao.qunar.com/ticket/list_%E5%AE%81%E5%A4%8F.html?from=mps_search_suggest_h')">
+						查看景点 >>
+					</button>
+				</p>
+				
+				<p>
+					<font>人气：</font><font th:text="${hotplace.sSoldnum}"></font>
+				</p>
+
+			</div>
+			<!-- 右边div END -->
+			
+		</div>
+		<!-- ~ 遍历div END -->
+
+	</div>
+	<!-- ~ 数据内容  END -->
+</body>
+</html>

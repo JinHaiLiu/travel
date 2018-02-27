@@ -10,6 +10,5 @@
 	<!-- <bean id="springContextUtil" class="com.travel.util.SpringContextUtil" scope="singleton"></bean> -->
 	
 	<!-- 载入mybatis配置文件 -->
-<!-- 	<import resource="spring-mybatis.xml" />
- -->
+<!-- 	<import resource="spring-mybatis.xml" /> -->
 </beans>

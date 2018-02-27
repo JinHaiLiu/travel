@@ -29,8 +29,8 @@ public class HotplaceServiceImpl implements HotplaceService {
      * @see com.travel.basic.service.HotplaceService#selectAll()
      */
     @Override
-    public List<Hotplace> selectAll() {
-        return hotplaceMapper.selectAll();
+    public List<Hotplace> selectAll(String desc) {
+        return hotplaceMapper.selectAll(desc);
     }
 
 }

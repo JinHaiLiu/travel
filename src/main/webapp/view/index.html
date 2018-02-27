@@ -2,18 +2,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>数据展示</title>
 
 <link rel="stylesheet" type="text/css" href="/css/bootstrap.css">
 <script src="/js/jquery-3.3.1.min.js"></script>
 <script src="/js/bootstrap.min.js"></script>
-<script>
-	function b1() {
-		this.selectSort(all.Filter.SortTypes.POP), this.dispatchActionEvent(
-				all.Filter.ActionTypes.SORT, all.Filter.SortTypes.POP)
-	}
-</script>
 </head>
 <body>
 	<!--  container BEGIN -->
@@ -24,7 +19,7 @@
 
 			<div class="panel-heading" style="height: 100px; text-align: center;">
 				<!-- panel-heading BEGIN -->
-				<h1 class="panel-title">数据之美</h1>
+				<h1 class="panel-title"  style="margin-top: 15px; font-size: 3em;">数据之美</h1>
 			</div>
 			<!-- ~ panel-heading END -->
 
@@ -33,51 +28,84 @@
 				<!-- panel-body BEGIN -->
 				<div>
 					<!-- 按钮 BEGIN -->
-					<button onclick="b1" class="btn btn-primary">星级</button>
-					<button type="button" class="btn btn-primary">人气</button>
-					<button type="button" class="btn btn-primary">价格</button>
+					<button onclick="showAtRight('/sdesc?sdesc=s_level')" class="btn btn-primary">星级</button>
+					<button onclick="showAtRight('/sdesc?sdesc=s_soldnum')" class="btn btn-primary">人气</button>
+					<button onclick="showAtRight('/sdesc?sdesc=s_price')" class="btn btn-primary">价格</button>
 				</div>
 				<!-- ~ 按钮 END -->
-				<div style="margin-top: 30px;">
+				
+				<div style="margin-top: 30px; height:950px; overflow:auto;"  id="content">
+				
 					<!-- 数据内容  BEGIN -->
-
 					<div th:each="hotplace,hotStat : ${all}">
 						<!-- 遍历div BEGIN -->
-						<div>
-							<div
-								style="height: 200px; width: 300px; border: 1px solid red; float: left; display: inline;">
-								<img th:src="@{${hotplace.sImg}}"
-									style="height: 200px; width: 300px;" />
+						<div style="float: left;  display: inline; margin-top: 5px;">
+							<!-- 图片div BEGIN -->
+							<div style="height: 190px; width: 260px; /* border: 1px solid red;*/ float: left; display: inline; margin-right: 8px;">
+								<img th:src="@{${hotplace.sImg}}" style="height: 190px; width: 256px;" />
 								<!-- 图片显示区域 -->
 							</div>
-							<div>
+							<!-- ~ 图片div END -->
+							
+							<!-- 中间div BEGIN -->
+							
+							<div style="/* border: 1px solid red; */ float: left; display: inline; width: 500px; height: 190px; ">
 
-								<div
-									style="border: 1px solid red; float: left; display: inline; height: 200px; width: 50%;">
-
-									<a
-										href="http://piao.qunar.com/ticket/list.htm?keyword=%E5%AE%81%E5%A4%8F&region=&from=mpl_search_suggest"><h1
-											th:text="${hotplace.sName}" /></a> <font>星级：</font><font
-										th:text="${hotplace.sLevel}"></font> <br /> <font>[</font><font
-										th:text="${hotplace.sArea}"></font><font>]</font> <br /> <font>详细地址：</font><font
-										th:text="${hotplace.sReplace}"></font> <br /> <font>看点：</font><font
-										th:text="${hotplace.sSlogen}"></font> <br />
-
-								</div>
-
-								<div
-									style="border: 1px solid red; float: left; display: inline; height: 200px; width: 15%; text-align: center;">
-
-									<br /> <br /> <br /> <font>门票：</font><font
-										th:text="${hotplace.sPrice}"></font> <br /> <br />
-									<button style="background-color: #1cafc5; color: #FFFFFF;"
-										onclick="window.open('http://piao.qunar.com/ticket/list_%E5%AE%81%E5%A4%8F.html?from=mps_search_suggest_h')">
-										查看景点 >></button>
-									<br /> <br /> <font>人气：</font><font
-										th:text="${hotplace.sSoldnum}"></font> <br />
-
-								</div>
+								<a href="http://piao.qunar.com/ticket/list.htm?keyword=%E5%AE%81%E5%A4%8F&region=&from=mpl_search_suggest" target="_blank">
+									<h1 th:text="${hotplace.sName}" />
+								</a>
+								<!-- 星级 BEGIN --> 
+								<p>
+									<font>星级：</font>
+									<font th:text="${hotplace.sLevel}"></font> 
+								<p>
+								<!-- ~ 星级 END -->
+								
+								<!-- 地址 BEGIN -->
+								<p>
+									<font>[</font>
+									<font th:text="${hotplace.sArea}"></font>
+									<font>]</font>
+								</p>
+								<!-- ~ 地址 END -->
+								
+								<!-- 详细地址 BEGIN -->
+								<p>
+								    <font>详细地址：</font>
+								    <font th:text="${hotplace.sReplace}"></font> 
+								</p>
+								<!-- ~ 详细地址 END -->
+								
+								<!-- 看点 BEGIN -->
+								<p>
+									<font>看点：</font>
+									<font th:text="${hotplace.sSlogen}"></font>
+								</p>
+								<!-- ~ 看点 END -->
 							</div>
+							<!-- ~ 中间div END -->
+							
+							<!-- 右边div BEGIN -->
+							<div style="/* border: 1px solid red; */ float: left; display: inline; width: 200px; height: 190px;  text-align: center;">
+
+								<p style="margin-top: 35px">
+									<font>门票：</font>
+									<font th:text="${hotplace.sPrice}"></font>
+								</p>
+								<p>
+									<button  type="button" class="btn btn-info"
+									 style="background-color: #1cafc5; color: #FFFFFF;" onclick="window.open('http://piao.qunar.com/ticket/list_%E5%AE%81%E5%A4%8F.html?from=mps_search_suggest_h')">
+										查看景点 >>
+									</button>
+								</p>
+								
+								<p>
+									<font>人气：</font><font th:text="${hotplace.sSoldnum}"></font>
+								</p>
+
+							</div>
+							<!-- 右边div END -->
+							
 						</div>
 						<!-- ~ 遍历div END -->
 
@@ -89,16 +117,135 @@
 			</div>
 			<!-- ~ panel-body END -->
 
-			<footer>&copy; Copyright &copy;宁夏大学新华学院计算机班suhu
-			 </footer>
-
 		</div>
 
 		<!-- ~ panel-primary END -->
-
-
 	</div>
 	<!--  ~ container END -->
+	
+	<footer class="footer navbar-fixed-bottom " style="background-color: #f5f5f5; " >
+	    <div class="container" style="text-align:  center; color: #337ab7; line-height: 38px;">
+	    	&copy; Copyright  
+	    	<font style="font-weight: 700;"> &nbsp;宁夏大学新华学院计算机班 &nbsp;suhu </font>
+	    </div>
+	</footer>
 
+
+<script type="text/javascript">
+		$(document).ready(function () {
+			
+		  var trigger = $('.hamburger'), overlay = $('.overlay'), isClosed = false;
+
+		    trigger.click(function () {
+		      hamburger_cross();      
+		    });
+
+		    function hamburger_cross() {
+
+		      if (isClosed == true) {          
+		        overlay.hide();
+		        trigger.removeClass('is-open');
+		        trigger.addClass('is-closed');
+		        isClosed = false;
+		      } else {   
+		        overlay.show();
+		        trigger.removeClass('is-closed');
+		        trigger.addClass('is-open');
+		        isClosed = true;
+		      }
+		  }
+		  
+		  $('[data-toggle="offcanvas"]').click(function () {
+		        $('#wrapper').toggleClass('toggled');
+		  });
+		  
+		});
+		
+		
+		/*
+         * 利用div实现左边点击右边显示的效果（以id="content"的div进行内容展示）
+         * 注意：
+         *   ①：js获取网页的地址，是根据当前网页来相对获取的，不会识别根目录；
+         *   ②：如果右边加载的内容显示页里面有css，必须放在主页（即例中的index.jsp）才起作用
+         *   （如果单纯的两个页面之间include，子页面的css和js在子页面是可以执行的。 主页面也可以调用子页面的js。但这时要考虑页面中js和渲染的先后顺序 ）
+        */
+        function showAtRight(url) {
+            var xmlHttp;
+            
+            if (window.XMLHttpRequest) {
+                // code for IE7+, Firefox, Chrome, Opera, Safari
+                xmlHttp=new XMLHttpRequest();    //创建 XMLHttpRequest对象
+            }
+            else {
+                // code for IE6, IE5
+                xmlHttp=new ActiveXObject("Microsoft.XMLHTTP");
+            }
+        
+            xmlHttp.onreadystatechange=function() {        
+                //onreadystatechange — 当readystate变化时调用后面的方法
+                
+                if (xmlHttp.readyState == 4) {
+                    //xmlHttp.readyState == 4    ——    finished downloading response
+                    
+                    if (xmlHttp.status == 200) {
+                        //xmlHttp.status == 200        ——    服务器反馈正常            
+                        
+                        document.getElementById("content").innerHTML=xmlHttp.responseText;    //重设页面中id="content"的div里的内容
+                        executeScript(xmlHttp.responseText);    //执行从服务器返回的页面内容里包含的JavaScript函数
+                    }
+                    //错误状态处理
+                    else if (xmlHttp.status == 404){
+                        alert("出错了☹   （错误代码：404 Not Found），……！"); 
+                        /* 对404的处理 */
+                        return;
+                    }
+                    else if (xmlHttp.status == 403) {  
+                        alert("出错了☹   （错误代码：403 Forbidden），……"); 
+                        /* 对403的处理  */ 
+                        return;
+                    }
+                    else {
+                        alert("出错了☹   （错误代码：" + request.status + "），……"); 
+                        /* 对出现了其他错误代码所示错误的处理   */
+                        return;
+                    }   
+                } 
+                    
+              }
+            
+            //把请求发送到服务器上的指定文件（url指向的文件）进行处理
+            xmlHttp.open("GET", url, true);        //true表示异步处理
+            xmlHttp.send();
+        }
+        
+        /*
+		 * 解决ajax返回的页面中含有javascript的办法：
+		 * 把xmlHttp.responseText中的脚本都抽取出来，不管AJAX加载的HTML包含多少个脚本块，我们对找出来的脚本块都调用eval方法执行它即可
+		 */
+		function executeScript(html)
+		{
+		    
+			var reg = /<script[^>]*>([^\x00]+)$/i;
+		    //对整段HTML片段按<\/script>拆分
+		    var htmlBlock = html.split("<\/script>");
+		    for (var i in htmlBlock) 
+		    {
+		        var blocks;//匹配正则表达式的内容数组，blocks[1]就是真正的一段脚本内容，因为前面reg定义我们用了括号进行了捕获分组
+		        if (blocks = htmlBlock[i].match(reg)) 
+		        {
+		            //清除可能存在的注释标记，对于注释结尾-->可以忽略处理，eval一样能正常工作
+		            var code = blocks[1].replace(/<!--/, '');
+		            try 
+		            {
+		                eval(code) //执行脚本
+		            } 
+		            catch (e) 
+		            {
+		            }
+		        }
+		    }
+		}
+		
+	</script>
 </body>
 </html>

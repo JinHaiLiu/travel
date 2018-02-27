@@ -1,5 +1,7 @@
 package com.travel;
 
+import java.util.List;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,8 +20,9 @@ public class TestDbConnect {
 
     @Test
     public void test() {
-        Hotplace hotplace = hotplaceService.selectByPrimaryKey(117);
-        System.out.println(hotplace);
+//        Hotplace hotplace = hotplaceService.selectByPrimaryKey(117);
+        List<Hotplace> all = hotplaceService.selectAll("s_level");
+        System.out.println(all);
     }
 
 }

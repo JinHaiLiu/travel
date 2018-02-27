@@ -34,11 +34,39 @@ public class HotplaceController {
     @RequestMapping(value = "/all")
     public String getAll(Model model, HttpServletRequest request, HttpServletResponse response) {
         try {
-            List<Hotplace> all = hotplaceService.selectAll();
+            
+            List<Hotplace> all = hotplaceService.selectAll(null);
             
             model.addAttribute("all", all);
             
             return "index";
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+        
+       
+    }
+    
+    /**
+     * 查询全部数据返回至前端
+     * 排序查询使用
+     * 
+     * @param model
+     * @param request
+     * @param response
+     * @return
+     */
+    @RequestMapping(value = "/sdesc")
+    public String getAllBySDesc(Model model, HttpServletRequest request, HttpServletResponse response) {
+        try {
+            String sdesc = request.getParameter("sdesc");
+            
+            List<Hotplace> all = hotplaceService.selectAll(sdesc);
+            
+            model.addAttribute("all", all);
+            
+            return "content";
         } catch (Exception e) {
             e.printStackTrace();
             return null;

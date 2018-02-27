@@ -22,12 +22,17 @@
     from hotplace
     where id = #{id,jdbcType=INTEGER}
   </select>
+  
   <!-- 查询全部数据 START -->
   <select id="selectAll" resultMap="BaseResultMap" >
 		select
 		<include refid="Base_Column_List" />
 		from hotplace
+		<if test="sdesc != null and sdesc != ''">
+			order by ${sdesc} desc
+		</if>
 	</select>
   <!-- 查询全部数据 END -->
+  
 	
 </mapper>
