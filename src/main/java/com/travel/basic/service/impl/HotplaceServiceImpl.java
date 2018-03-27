@@ -33,4 +33,24 @@ public class HotplaceServiceImpl implements HotplaceService {
         return hotplaceMapper.selectAll(desc);
     }
 
+    /* 
+     * 根据月份查询数据
+     * 
+     * @see com.travel.basic.service.HotplaceService#selectByMonth(java.lang.String)
+     */
+    @Override
+    public List<Hotplace> selectByMonth() {
+        return hotplaceMapper.selectByMonth();
+    }
+
+    /* 
+     * 根据价格展示数据
+     * 
+     * @see com.travel.basic.service.HotplaceService#selectByPrice()
+     */
+    @Override
+    public List<Hotplace> selectByPrice() {
+        return hotplaceMapper.selectByPrice();
+    }
+
 }

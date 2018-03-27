@@ -1,5 +1,9 @@
 package com.travel.basic.entity;
 
+
+/**
+ * @author suhu
+ */
 public class Hotplace {
     private Integer id;
 
@@ -20,7 +24,20 @@ public class Hotplace {
     private String sReplace;
 
     private String sSlogen;
-
+    
+    private String sMonth;
+    
+    
+    
+    private String soldnum1; // 上月份人气数字段
+    
+    private String soldnum2; // 当前月人气数字段
+    
+    private String price1; // 上月份价格字段
+    
+    private String price2; // 当前月份价格字段
+    
+    
     public Integer getId() {
         return id;
     }
@@ -100,12 +117,52 @@ public class Hotplace {
     public void setsSlogen(String sSlogen) {
         this.sSlogen = sSlogen == null ? null : sSlogen.trim();
     }
+    
+    public String getsMonth() {
+        return sMonth;
+    }
+
+    public void setsMonth(String sMonth) {
+        this.sMonth = sMonth;
+    }
+    
+    public String getSoldnum1() {
+        return soldnum1;
+    }
+
+    public void setSoldnum1(String soldnum1) {
+        this.soldnum1 = soldnum1;
+    }
+
+    public String getSoldnum2() {
+        return soldnum2;
+    }
+
+    public void setSoldnum2(String soldnum2) {
+        this.soldnum2 = soldnum2;
+    }
+    
+    public String getPrice1() {
+        return price1;
+    }
+
+    public void setPrice1(String price1) {
+        this.price1 = price1;
+    }
+
+    public String getPrice2() {
+        return price2;
+    }
+
+    public void setPrice2(String price2) {
+        this.price2 = price2;
+    }
 
     @Override
     public String toString() {
         return "Hotplace [id=" + id + ", sImg=" + sImg + ", sName=" + sName + ", sLevel=" + sLevel + ", sArea=" + sArea
                 + ", sPrice=" + sPrice + ", sSoldnum=" + sSoldnum + ", sightHot=" + sightHot + ", sReplace=" + sReplace
-                + ", sSlogen=" + sSlogen + "]";
+                + ", sSlogen=" + sSlogen + ", sMonth=" + sMonth + "]";
     }
-
+    
 }

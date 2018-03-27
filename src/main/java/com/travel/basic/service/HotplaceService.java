@@ -2,6 +2,8 @@ package com.travel.basic.service;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
+
 import com.travel.basic.entity.Hotplace;
 
 /**
@@ -24,5 +26,19 @@ public interface HotplaceService {
      * @return
      */
     List<Hotplace> selectAll(String desc);
+    
+    /**
+     * 根据月份查询数据
+     * 
+     * @return
+     */
+    List<Hotplace> selectByMonth();
+
+    /**
+     * 根据价格展示诗句
+     * 
+     * @return
+     */
+    List<Hotplace> selectByPrice();
 
 }

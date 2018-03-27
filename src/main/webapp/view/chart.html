@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html style="height: 50%">
+
+<head>
+<meta charset="utf-8" />
+<title>条形图展示</title>
+<script src="/js/jquery-3.3.1.min.js"></script>
+<!-- 引入 ECharts 文件 -->
+<script type="text/javascript" src="/js/echarts.min.js"></script>
+<script type="text/javascript" src="/js/dark.js"></script>
+<script type="text/javascript" src="/js/customed.js"></script>
+
+</head>
+
+<body style="height: 100%; margin: 0">
+	<div id="container1" style="height: 98%">的萨发</div>
+	<div id="container2" style="height: 98%"></div>
+</body>
+
+<script type="text/javascript">
+   /********   人气展示  S   **********/
+	var dom1 = document.getElementById("container1");
+	var myChart1 = echarts.init(dom1, "dark");
+	
+	
+	myChart1.setOption({
+		title : {
+			text : '人气展示'
+		},
+		legend : {
+		},
+		tooltip : {},
+	    grid: {  
+            y2: 140
+        }, 
+	    // 声明一个 X 轴，类目轴（category）。默认情况下，类目轴对应到 dataset 第一列。
+	    xAxis: {type: 'category',
+	    	axisLabel:{
+				interval:0, // 横轴信息全部显示
+				rotate:-45 // -45度角倾斜显示
+			}
+	    },
+	    // 声明一个 Y 轴，数值轴。
+	    yAxis: {},
+	    // 声明多个 bar 系列，默认情况下，每个系列会自动对应到 dataset 的每一列。
+	    series: [
+	        {type: 'bar'},
+	        {type: 'bar'}
+	    ]
+	});
+	
+	// 异步加载数据
+	$.get('/chart').done(function(data) {
+		// 填入数据
+		myChart1.setOption({
+			dataset: {
+				source:data.source
+			}
+		});
+	});
+	/********   人气展示  E  **********/
+	
+	 /********   价格展示  S   **********/
+	var dom2 = document.getElementById("container2");
+	var myChart2 = echarts.init(dom2, "dark");
+	
+	
+	myChart2.setOption({
+		title : {
+			text : '价格展示'
+		},
+		legend : {
+		},
+		tooltip : {},
+	    grid: {  
+            y2: 140
+        }, 
+	    // 声明一个 X 轴，类目轴（category）。默认情况下，类目轴对应到 dataset 第一列。
+	    xAxis: {type: 'category',
+	    	axisLabel:{
+				interval:0, // 横轴信息全部显示
+				rotate:-45 // -45度角倾斜显示
+			}
+	    },
+	    // 声明一个 Y 轴，数值轴。
+	    yAxis: {},
+	    // 声明多个 bar 系列，默认情况下，每个系列会自动对应到 dataset 的每一列。
+	    series: [
+	        {type: 'bar'},
+	        {type: 'bar'}
+	    ]
+	});
+	
+	// 异步加载数据
+	$.get('/chartprice').done(function(data) {
+		// 填入数据
+		myChart2.setOption({
+			dataset: {
+				source:data.source
+			}
+		});
+	});
+	/********   价格展示   E  **********/
+
+</script>
+
+</html>
