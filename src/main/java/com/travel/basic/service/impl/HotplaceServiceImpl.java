@@ -29,8 +29,8 @@ public class HotplaceServiceImpl implements HotplaceService {
      * @see com.travel.basic.service.HotplaceService#selectAll()
      */
     @Override
-    public List<Hotplace> selectAll(String desc) {
-        return hotplaceMapper.selectAll(desc);
+    public List<Hotplace> selectAll(String month, String desc) {
+        return hotplaceMapper.selectAll(month, desc);
     }
 
     /* 
@@ -51,6 +51,16 @@ public class HotplaceServiceImpl implements HotplaceService {
     @Override
     public List<Hotplace> selectByPrice() {
         return hotplaceMapper.selectByPrice();
+    }
+
+    /* 
+     * 查询月份
+     * 
+     * @see com.travel.basic.service.HotplaceService#getMonth()
+     */
+    @Override
+    public List<String> getMonth() {
+        return hotplaceMapper.getMonth();
     }
 
 }

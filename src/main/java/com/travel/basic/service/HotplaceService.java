@@ -22,10 +22,11 @@ public interface HotplaceService {
     /**
      * 查询全部数据
      * 
+     * @param month
      * @param desc
      * @return
      */
-    List<Hotplace> selectAll(String desc);
+    List<Hotplace> selectAll(String month,String desc);
     
     /**
      * 根据月份查询数据
@@ -40,5 +41,13 @@ public interface HotplaceService {
      * @return
      */
     List<Hotplace> selectByPrice();
+    
+    /**
+     * 查询月份
+     * 
+     * @return
+     */
+    List<String> getMonth();
+
 
 }

@@ -10,6 +10,27 @@
 <script src="/js/jquery-3.3.1.min.js"></script>
 <script src="/js/bootstrap.min.js"></script>
 </head>
+<style>
+.form-control-extend{
+    /* display: block; */
+    /* width: 100%; */
+    height: 34px;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #555;
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+    -webkit-transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
+    -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+    transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+}
+
+</style>
 <body>
 	<!--  container BEGIN -->
 	<div class="container">
@@ -27,6 +48,12 @@
 			<div class="panel-body">
 				<!-- panel-body BEGIN -->
 				<div>
+				    <!-- 月份下拉 S -->
+				    <select class="form-control-extend" id="month">
+				      <option th:each="arrm : ${arrMonth}" th:text="${arrm+'月'}" th:value="${arrm}"></option>
+				    </select>
+				    <!-- 月份下拉 E -->
+				    
 					<!-- 按钮 BEGIN -->
 					<button onclick="showAtRight('/sdesc?sdesc=s_level')" class="btn btn-primary">星级</button>
 					<button onclick="showAtRight('/sdesc?sdesc=s_soldnum')" class="btn btn-primary">人气</button>
@@ -172,6 +199,11 @@
         */
         function showAtRight(url) {
             var xmlHttp;
+            
+            // 追加月份
+            var month = $("#month option:selected").val();
+            url = url + "&month="+month;
+            
             
             if (window.XMLHttpRequest) {
                 // code for IE7+, Firefox, Chrome, Opera, Safari

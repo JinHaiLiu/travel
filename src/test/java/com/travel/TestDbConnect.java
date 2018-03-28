@@ -21,7 +21,7 @@ public class TestDbConnect {
     @Test
     public void test() {
 //        Hotplace hotplace = hotplaceService.selectByPrimaryKey(117);
-        List<Hotplace> all = hotplaceService.selectAll("s_level");
+        List<Hotplace> all = hotplaceService.selectAll("3","s_level");
         System.out.println(all);
     }
 

@@ -10,9 +10,11 @@ public interface HotplaceMapper {
     
     Hotplace selectByPrimaryKey(Integer id);
     
-    List<Hotplace> selectAll(@Param("sdesc")String sdesc);
+    List<Hotplace> selectAll(@Param("month")String month, @Param("sdesc")String sdesc);
     
     List<Hotplace> selectByMonth();
 
     List<Hotplace> selectByPrice();
+
+    List<String> getMonth();
 }

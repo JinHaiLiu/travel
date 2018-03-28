@@ -32,6 +32,9 @@
 		select
 		<include refid="Base_Column_List" />
 		from hotplace
+		<if test="month != null and month != ''">
+			where s_month = #{month}
+		</if>
 		<if test="sdesc != null and sdesc != ''">
 			order by ${sdesc} desc
 		</if>
@@ -67,10 +70,19 @@
 	<select id="selectByPrice" resultMap="resultChartPriceMap">
 		SELECT
 		s_name,
-		MAX(CASE s_month WHEN MONTH(NOW())-1 THEN s_price ELSE 0 END) price1,
-		MAX(CASE s_month WHEN MONTH(NOW()) THEN s_price ELSE 0 END) price2
-		FROM hotplace GROUP BY s_name
+		MAX(CASE
+		s_month WHEN MONTH(NOW())-1 THEN s_price ELSE 0 END) price1,
+		MAX(CASE
+		s_month WHEN MONTH(NOW()) THEN s_price ELSE 0 END) price2
+		FROM hotplace
+		GROUP BY s_name
 	</select>
 	<!-- 根据价格展示数据 END -->
+
+	<!-- 查询月份 S -->
+	<select id="getMonth" resultType="string">
+		SELECT DISTINCT s_month FROM hotplace ORDER BY s_month DESC
+	</select>
+	<!-- 查询月份 E -->
 
 </mapper>

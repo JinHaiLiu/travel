@@ -39,11 +39,17 @@ public class HotplaceController {
     @RequestMapping(value = "/all")
     public String getAll(Model model, HttpServletRequest request, HttpServletResponse response) {
         try {
+            String month = String.valueOf( DateUtils.getMonth() );
 
-            List<Hotplace> all = hotplaceService.selectAll(null);
+            List<Hotplace> all = hotplaceService.selectAll(month, null);
 
             model.addAttribute("all", all);
-
+            
+            // 返回月份
+            List<String> arrMonth = hotplaceService.getMonth();
+            
+            model.addAttribute("arrMonth", arrMonth);
+            
             return "index";
         } catch (Exception e) {
             e.printStackTrace();
@@ -64,8 +70,8 @@ public class HotplaceController {
     public String getAllBySDesc(Model model, HttpServletRequest request, HttpServletResponse response) {
         try {
             String sdesc = request.getParameter("sdesc");
-
-            List<Hotplace> all = hotplaceService.selectAll(sdesc);
+            String month = request.getParameter("month");
+            List<Hotplace> all = hotplaceService.selectAll(month, sdesc);
 
             model.addAttribute("all", all);
 
